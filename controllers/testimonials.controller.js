@@ -42,8 +42,12 @@ exports.getAll = async (req, res) => {
     const { author, text } = req.body;
 
   try {
-    await Testimonial.updateOne({ _id: req.params.id }, { $set: { author, text }});
-    res.json({ message: 'OK, You changed:' + dep });
+    const dep = await(Testimonial.findById(req.params.id));
+    if(dep) {
+        await Testimonial.updateOne({ _id: req.params.id }, { $set: { author, text }});
+        res.json({ message: 'OK:' + dep });
+    }
+    else res.status(404).json({ message: 'Not found...' });
   }
   catch(err) {
     res.status(500).json({ message: err });
@@ -57,7 +61,7 @@ exports.deletedId = async (req, res) => {
       const dep = await(Testimonial.findById(req.params.id));
       if(dep) {
         await Testimonial.deleteOne({ _id: req.params.id });
-        res.json({ message: 'OK, You deleted:' + dep });
+        res.json({ message: 'OK:' + dep });
       }
       else res.status(404).json({ message: 'Not found...' });
     }

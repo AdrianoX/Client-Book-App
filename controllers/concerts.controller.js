@@ -42,8 +42,12 @@ exports.getAll = async (req, res) => {
     const { performer, genre, price, day, image } = req.body;
 
   try {
-    await Concert.updateOne({ _id: req.params.id }, { $set: { performer, genre, price, day, image }});
-    res.json({ message: 'OK, You changed:' + dep });
+    const dep = await(Concert.findById(req.params.id));
+    if(dep) {
+        await Concert.updateOne({ _id: req.params.id }, { $set: { performer, genre, price, day, image }});
+        res.json({ message: 'OK:' + dep });
+    }
+    else res.status(404).json({ message: 'Not found...' });
   }
   catch(err) {
     res.status(500).json({ message: err });
@@ -57,7 +61,7 @@ exports.deletedId = async (req, res) => {
       const dep = await(Concert.findById(req.params.id));
       if(dep) {
         await Concert.deleteOne({ _id: req.params.id });
-        res.json({ message: 'OK, You deleted:' + dep });
+        res.json({ message: 'OK:' + dep });
       }
       else res.status(404).json({ message: 'Not found...' });
     }
