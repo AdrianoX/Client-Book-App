@@ -52,7 +52,6 @@ exports.getAll = async (req, res) => {
   catch(err) {
     res.status(500).json({ message: err });
   }
-
 };
 
 exports.deletedId = async (req, res) => {
