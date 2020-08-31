@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const mongoose = requirde('mongoose');
+const mongoose = require('mongoose');
 const socket = require('socket.io');
 
 const testimonialsRoutes = require('./routes/testimonials.routes');
@@ -37,7 +37,7 @@ app.get('*', (req, res) => {
  })
 
  // connects our backend code with the database
-mongoose.connect('mongodb://localhost:27017/companyDB', { useNewUrlParser: true });
+mongoose.connect('mongodbmongodb+srv://AdrianoXX:m@rian77=@cluster0.6d47y.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
