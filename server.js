@@ -38,6 +38,7 @@ app.get('*', (req, res) => {
 
  // connects our backend code with the database
 mongoose.connect('mongodbmongodb+srv://AdrianoXX:m@rian77=@cluster0.6d47y.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/NewWaveDB', {useNewUrlParser: true, useUnifiedTopology: true});    // <-- CL ?
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -46,10 +47,13 @@ db.once('open', () => {
 db.on('error', err => console.log('Error ' + err));
 
  const server = app.listen(process.env.PORT || 8000, () => {
-    console.log('Server is running on port: 8000 ; )');
+    console.log('Server is running on port: 8000 ; o');
   });
 
   const io = socket(server);
   io.on('connection', (socket) => {
     console.log('New socket !!!')
   });
+
+  
+  module.exports = server;
