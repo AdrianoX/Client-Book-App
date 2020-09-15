@@ -12,10 +12,10 @@ const request = chai.request;
 describe('GET /api/concerts', () => {
 
     before(async () => {
-        const testConOne = new Concert({ _id: '5d9f1140f10a81216cfd4408', performer: 'John Doe', genre: 'Rock', price: 25, day: 1, image: '/img/uploads/1fsd324fsdg.jpg'  });
+        const testConOne = new Concert({ _id: '5d9f1140f10a81216cfd4408', performer: 'John Doe', genre: 'Rock', price: 25, day: 1, image: '/img/uploads/1fsd324fsdg.jpg', tickets: 40  });
         await testConOne.save();
 
-        const testConTwo = new Concert({ _id: '5d9f1159f81ce8d1ef2bee48', performer: 'Rebekah Parker', genre: 'R&B', price: 25, day: 1, image: '/img/uploads/2f342s4fsdg.jpg' });
+        const testConTwo = new Concert({ _id: '5d9f1159f81ce8d1ef2bee48', performer: 'Rebekah Parker', genre: 'R&B', price: 25, day: 1, image: '/img/uploads/2f342s4fsdg.jpg', tickets: 45  });
         await testConTwo.save();
     });
 
@@ -30,7 +30,7 @@ describe('GET /api/concerts', () => {
         const res = await request(server).get('/api/concerts/genre/Rock');
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('array');
-        expect(res.body.length).to.be.equal(2);
+        expect(res.body.length).to.be.equal(1);
     });
 
     it('/:price/:price  ', async () => {
