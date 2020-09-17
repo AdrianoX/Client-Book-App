@@ -5,6 +5,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const socket = require('socket.io');
 
+
+// import routes
 const testimonialsRoutes = require('./routes/testimonials.routes');
 const concertsRoutes = require('./routes/concerts.routes');
 const seatsRoutes = require('./routes/seats.routes');
@@ -38,8 +40,12 @@ app.get('*', (req, res) => {
 
  // connects our backend code with the database
 mongoose.connect('mongodbmongodb+srv://AdrianoXX:m@rian77=@cluster0.6d47y.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true });
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', {useNewUrlParser: true, useUnifiedTopology: true});    // <-- CL ?
+// mongoose.connect('mongodb://localhost:27017/NewWaveDB', {useNewUrlParser: true, useUnifiedTopology: true});   
 const db = mongoose.connection;
+
+
+// const dbURI = (process.env.NODE_ENV === 'production' ? `mongodb+srv://${process.env.login}:${process.env.password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority` : 'mongodb://localhost:27017/NewWaveDB');
+// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });    <- CL
 
 db.once('open', () => {
   console.log('Connected to the database');
@@ -51,6 +57,7 @@ db.on('error', err => console.log('Error ' + err));
   });
 
   const io = socket(server);
+  
   io.on('connection', (socket) => {
     console.log('New socket !!!')
   });

@@ -19,28 +19,28 @@ describe('GET /api/concerts', () => {
         await testConTwo.save();
     });
 
-    it('/:performer/:performer  ', async () => {
+    it('/:performer/:performer should return performers by name ', async () => {
         const res = await request(server).get('/api/concerts/performer/Rebekah Parker');
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('array');
-        expect(res.body.length).to.not.be.null;
+        expect(res.body.length).to.be.equal(1);
     });
 
-    it('/:genre/:genre', async () => {
+    it('/:genre/:genre should return performers by genre', async () => {
         const res = await request(server).get('/api/concerts/genre/Rock');
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('array');
         expect(res.body.length).to.be.equal(1);
     });
 
-    it('/:price/:price  ', async () => {
+    it('/:price/:price should return performers by price  ', async () => {
         const res = await request(server).get('/api/concerts/price/25/35');
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('array');
         expect(res.body.length).to.be.equal(2);
     });
 
-    it('/:day/:day  ', async () => {
+    it('/:day/:day should return performers by day  ', async () => {
         const res = await request(server).get('/api/concerts/day/1');
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('array');
