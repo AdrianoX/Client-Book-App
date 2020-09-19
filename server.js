@@ -5,7 +5,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const socket = require('socket.io');
 
-
 // import routes
 const testimonialsRoutes = require('./routes/testimonials.routes');
 const concertsRoutes = require('./routes/concerts.routes');
@@ -24,7 +23,6 @@ app.use((req, res, next) => {
     req.io = io;
     next();
   });
-
 
 app.use('/api', testimonialsRoutes);
 app.use('/api', concertsRoutes);
@@ -62,5 +60,4 @@ db.on('error', err => console.log('Error ' + err));
     console.log('New socket !!!')
   });
 
-  
   module.exports = server;
