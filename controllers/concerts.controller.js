@@ -1,6 +1,7 @@
 const Concert = require('../models/concert.model');
 const sanitize = require('mongo-sanitize');
 
+
 exports.getAll = async (req, res) => {
     try {
       res.json(await Concert.find());  //       res.json(await Concert.find().populate('Seat'));
@@ -119,3 +120,4 @@ exports.deletedId = async (req, res) => {
     }
     
   };
+  
