@@ -19,7 +19,6 @@ exports.getAll = async (req, res) => {
     catch(err) {
       res.status(500).json({ message: err });
     }
-  
   };
 
   exports.post = async (req, res) => {
@@ -34,7 +33,6 @@ exports.getAll = async (req, res) => {
     } catch(err) {
       res.status(500).json({ message: err });
     }
-  
   };
 
   exports.putId = async (req, res) => {
