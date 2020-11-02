@@ -39,9 +39,8 @@ app.get('*', (req, res) => {
    res.status(404).json({message: '404 not found...'});
  })
 
- // connects our backend code with the database
-// mongoose.connect('mongodbmongodb+srv://AdrianoXX:m@rian77=@cluster0.6d47y.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true });
-// mongoose.connect('mongodb://localhost:27017/NewWaveDB', {useNewUrlParser: true, useUnifiedTopology: true});   
+ 
+
 const db = mongoose.connection;
 
 
