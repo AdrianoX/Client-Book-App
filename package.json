@@ -9,9 +9,9 @@
     "mongo-sanitize": "1.0.1",
     "mongodb-memory-server": "^6.7.5",
     "mongoose": "^5.7.1",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.17",
     "onchange": "6.1.0",
-    "snyk": "^1.398.1",
+    "snyk": "^1.680.0",
     "socket.io": "2.2.0",
     "uuid": "^8.2.0"
   },
